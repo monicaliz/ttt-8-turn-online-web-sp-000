@@ -1,3 +1,4 @@
+require 'pry'
 def display_board(board)
     puts " #{board[0]} | #{board[1]} | #{board[2]} "
     puts "-----------"
@@ -37,12 +38,13 @@ def move(board, index, current_player = "X")
 end
 
 def turn(board)
-puts "Please enter 1-9:"
-user_input = gets.chomp
-if valid_move?(board, index)
-  move(board, index)
-  display_board(board)
-else
-  turn(board)
-end
+  puts "Please enter 1-9:"
+  user_input = gets.chomp
+  index = input_to_index(user_input)
+  if valid_move?(board, index)
+    move(board, index)
+    display_board(board)
+  else
+    turn(board)
+  end
 end
